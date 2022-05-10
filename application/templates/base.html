@@ -1,0 +1,54 @@
+<html>
+  <head>
+    <style>
+      table, th, td {
+      border:1px solid black;
+    }
+    </style>
+    
+    {% if title %}
+    <title>{{ title }} - IoT Scale</title>
+    {% else %}
+    <title>A Website</title>
+    {% endif %}
+    {% block head_content %}{% endblock %}
+  </head>
+  <body>
+    {% block body_content %}
+      <div>
+        <table>
+          <tr>
+            <th>Current Weight</th>
+            <th>Minimum Weight</th>
+            <th>Item</th>
+            <th>Email</th>
+          </tr>
+          <tr>
+            <td>{{ current_weight }}</td>
+            <td>{{ min_weight }}</td>
+            <td>{{ item }}</td>
+            <td>{{ email}} </td>
+          </tr>
+        </table>
+      </div>
+    {% endblock %}
+    <div>
+      <form action="/update_min" method="POST">
+          <input type="number" placeholder="update min. weight" name="min_weight">
+          <input type="submit" value="Submit">
+      </form>
+    </div>
+    <div>
+      <form action="/update_item" method="POST">
+          <input type="text" placeholder="update item" name="item">
+          <input type="submit" value="Submit">
+      </form>
+    </div>
+    <div>
+      <form action="/update_email" method="POST">
+          <input type="text" placeholder="update email" name="email">
+          <input type="submit" value="Submit">
+      </form>
+    </div>
+  </body>
+</html>
