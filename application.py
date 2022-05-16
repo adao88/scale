@@ -50,7 +50,7 @@ def update_email():
     return render_template('base.html', title='IoT Scale', current_weight=cur_weight, min_weight=min_weight, email=email)
 
 
-@application.route('/update_weight/<string:weight>', methods=["GET"])
+@application.route('/post_weight/<string:weight>', methods=["GET"])
 def update_weight(weight):
     new_weight = int(weight)
     db.scale.update_one({"name": "scale"}, {"$set": {"weight":new_weight}})
